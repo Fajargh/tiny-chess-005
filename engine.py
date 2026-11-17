@@ -41,7 +41,7 @@ TT = {}
 SN = {}
 HS = {}
 HG = None
-KL = [0] * 256
+KL = [0] * 1024
 def uci(m):
     f = "abcdefgh"
     o = f[m & 7] + str(((m >> 4) & 7) + 1) + f[(m >> 7) & 7] + str(((m >> 11) & 7) + 1)
@@ -273,7 +273,7 @@ def srch(a, b, dp, ply):
         _, v, f, tm = te
         if f == 0 or (f == 1 and v >= b) or (f == 2 and v <= a): return v
     e = evl() if S == 0 else -evl()
-    if dp >= 3 and not ck and PH and e >= b:
+    if dp >= 3 and not ck and PH > 6 and e >= b:
         ep0 = EP
         nm(-1)
         v = -srch(-b, -b + 1, dp - 3, ply + 1)
