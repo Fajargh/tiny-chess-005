@@ -266,7 +266,7 @@ def srch(a, b, dp, ply):
     ND += 1
     if (ND & 2047) == 0 and ND > LM: raise Stop
     ck = atk(KS[S], S == 1)
-    if ck: dp += 2
+    if ck: dp += 1
     te = TT.get(KEY)
     tm = 0
     if te and te[0] >= dp:
